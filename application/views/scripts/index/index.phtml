@@ -1,0 +1,78 @@
+<br /><br />
+<div id="view-content">
+   <?php
+   if(!empty($this->msg))
+   {
+    ?><p> you not logged in. Click <a style="color:red;" href="/Blog/public/Users/login">here</a> to login</p>
+    <?php
+        for($i=0; $i<count($this->posts); $i++){
+            foreach($this->posts[$i] as $key => $value){
+                if($key =="title")
+                {
+                ?>
+                
+                <h2>
+                    <?php
+                    echo $value;
+                    ?>
+                </h2>
+                <?php
+                 echo "<hr>";
+            }
+
+            
+        }
+
+}
+   }
+   else
+   {
+   ?>
+   <p>You are : <?php echo $this->username;?> and your role is: <?php echo $this->role ;?></p>
+    <?php
+//var_dump($this->users);
+    if(empty($this->posts)){
+?>
+<form method="post" action="/Blog/public/Users/profile">
+    <input type="text" placeholder="enter title here"/>
+    <input type="submit" value="Post">
+</form>
+<?php
+}
+else
+{
+    for($i=0; $i<count($this->posts); $i++){
+        foreach($this->posts[$i] as $key => $value){
+            if($key =="title")
+            {
+                ?>
+                
+                <h2>
+                    <?php
+                    echo $value;
+                    ?>
+                </h2>
+                <?php
+                 echo "<hr>";
+            }
+
+            
+        }
+        if ($this->role =="admin")
+        {
+    echo "<a style='color:red;' href='http://localhost/newoneassuit/public/user/edit/id/".$this->posts[$i]['id']."'>Edit </a>";
+    echo "<a style='color:red;' href='/Blog/public/Post/delete/id/".$this->posts[$i]['id']."'>Delete</a>";
+     echo "<a style='color:red;' href='/Blog/public/Post/add'>Add</a>";
+    echo "<hr>";
+}
+else
+{
+    echo "<a style='color:red;' href='/Blog/public/Post/add'>Add</a>";
+    echo "<hr>";
+}
+
+    }
+}
+}
+?>
+</div>

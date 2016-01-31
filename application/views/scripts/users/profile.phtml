@@ -1,0 +1,35 @@
+<br /><br />
+<div id="view-content">
+	<p><?php echo $this->id; ?></p>
+	<p>
+		<?php
+//var_dump($this->users);
+	for($i=0; $i<count($this->users); $i++){
+		foreach($this->users[$i] as $key => $value){
+			echo $key.": ".$value."<br />";
+		}
+	echo "<a style='color:red;'href='/Blog/public/Users/edit/id/".$this->users[$i]['id']."'>Edit </a>";
+	echo "<a style='color:red;' href='/Blog/public/Users/delete/id/".$this->users[$i]['id']."'>Delete</a>";
+	echo "<hr>";
+	}
+?>
+	</p>
+	<p>"Role: "
+	<?php
+	echo ($this->role);
+	if($this->role=="admin")
+	{
+		?>
+		<p>All users</p>
+		<?php for($i=0; $i<count($this->Allusers); $i++){
+		foreach($this->Allusers[$i] as $key => $value){
+			echo $key.": ".$value."<br />";
+		}
+	echo "<a style='color:red;'href='/Blog/public/Users/edit/id/".$this->Allusers[$i]['id']."'>Edit </a>";
+	echo "<a style='color:red;' href='/Blog/public/Users/delete/id/".$this->Allusers[$i]['id']."'>Delete</a>";
+	echo "<hr>";
+	}
+	}
+	?>
+	</p>
+</div>

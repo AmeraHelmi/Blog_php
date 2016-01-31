@@ -1,0 +1,15 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Users</b> and script/action name <b>list</b></p>
+	<?php
+//var_dump($this->users);
+	for($i=0; $i<count($this->users); $i++){
+		foreach($this->users[$i] as $key => $value){
+			echo $key.": ".$value."<br />";
+		}
+	echo "<a href='http://localhost/newoneassuit/public/user/edit/id/".$this->users[$i]['id']."'>Edit </a>";
+	echo "<a href='http://localhost/newoneassuit/public/user/delete/id/".$this->users[$i]['id']."'>Delete</a>";
+	echo "<hr>";
+	}
+?>
+</div>

@@ -1,0 +1,38 @@
+<br /><br />
+<div id="view-content">
+   
+    <?php
+        for($i=0; $i<count($this->cats); $i++)
+        {
+        	foreach($this->cats[$i] as $key => $value)
+        	{
+            	if($key =="name")
+            	{
+    ?>
+                
+                <h2>
+                    <?php
+                    echo $value;
+                    ?>
+                </h2>
+                <?php
+                 echo "<hr>";
+            }
+
+            
+        }
+        if ($this->role =="admin")
+        {
+    echo "<a style='color:red;' href='http://localhost/newoneassuit/public/user/edit/id/".$this->cats[$i]['id']."'>Edit </a>";
+    echo "<a style='color:red;' href='/Blog/public/Category/delete/id/".$this->cats[$i]['id']."'>Delete</a>";
+    echo "<hr>";
+}
+else
+{
+   
+}
+
+    }
+
+?>
+</div>
